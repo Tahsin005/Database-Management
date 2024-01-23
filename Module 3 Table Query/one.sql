@@ -47,7 +47,7 @@ USE phitron;
 -- );
 
 -- CREATE TABLE Library(
--- 	BookName CHAR(50) PRIMARY KEY,
+-- 	   BookName CHAR(50) PRIMARY KEY,
 --     Who_hired CHAR(4),
 --     FOREIGN KEY(Who_hired) REFERENCES Student(Roll)
 -- );
