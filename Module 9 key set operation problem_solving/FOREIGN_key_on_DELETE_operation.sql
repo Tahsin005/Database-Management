@@ -1,0 +1,76 @@
+USE WEEK3;
+
+DROP TABLE ENROLL;
+DROP TABLE STUDENT;
+DROP TABLE COURSE;
+
+
+CREATE TABLE STUDENT(
+	ROLL VARCHAR(5) PRIMARY KEY,
+    NAME VARCHAR(50)
+);
+
+CREATE TABLE COURSE(
+	COURSENO VARCHAR(5) PRIMARY KEY,
+    COURSENAME VARCHAR(50)
+);
+
+CREATE TABLE ENROLL(
+	ROLL VARCHAR(5),
+    COURSENO VARCHAR(5),
+    DATEOFENROLL DATE,
+    FOREIGN KEY(ROLL)
+		REFERENCES STUDENT(ROLL)
+        -- ON DELETE CASCADE,
+        ON DELETE SET NULL,
+	FOREIGN KEY(COURSENO) 
+		REFERENCES COURSE(COURSENO)
+		-- ON DELETE CASCADE
+        ON DELETE SET NULL
+);
+
+-- Insert data into the STUDENT table
+INSERT INTO STUDENT (ROLL, NAME) VALUES 
+('S001', 'John Doe'),
+('S002', 'Alice Smith'),
+('S003', 'Bob Johnson'),
+('S004', 'Emma White'),
+('S005', 'Charlie Brown'),
+('S006', 'Sophia Lee'),
+('S007', 'David Wang'),
+('S008', 'Olivia Davis'),
+('S009', 'Ethan Miller'),
+('S010', 'Ava Wilson');
+
+-- Insert data into the COURSE table
+INSERT INTO COURSE (COURSENO, COURSENAME) VALUES
+('C001', 'Mathematics'),
+('C002', 'Physics'),
+('C003', 'Chemistry'),
+('C004', 'Computer Science'),
+('C005', 'Biology'),
+('C006', 'History'),
+('C007', 'English'),
+('C008', 'Economics'),
+('C009', 'Psychology'),
+('C010', 'Art');
+
+-- Insert data into the ENROLL table
+INSERT INTO ENROLL (ROLL, COURSENO, DATEOFENROLL) VALUES
+('S001', 'C001', '2024-01-27'),
+('S001', 'C002', '2024-01-28'),
+('S002', 'C003', '2024-01-29'),
+('S002', 'C004', '2024-01-30'),
+('S003', 'C005', '2024-01-31'),
+('S003', 'C006', '2024-02-01'),
+('S004', 'C007', '2024-02-02'),
+('S004', 'C008', '2024-02-03'),
+('S005', 'C009', '2024-02-04'),
+('S005', 'C010', '2024-02-05');
+
+SELECT * FROM STUDENT;
+SELECT * FROM COURSE;
+SELECT * FROM ENROLL;
+
+DELETE FROM STUDENT
+WHERE ROLL = 'S002';
